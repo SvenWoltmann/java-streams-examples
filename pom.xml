@@ -32,10 +32,19 @@
     <!-- The classes are the runnable listings of the article; there is nothing to unit-test in them. -->
     <sonar.coverage.exclusions>**/*.java</sonar.coverage.exclusions>
 
-    <sonar.issue.ignore.multicriteria>e1</sonar.issue.ignore.multicriteria>
+    <sonar.issue.ignore.multicriteria>e1,e2,e3,e4</sonar.issue.ignore.multicriteria>
     <!-- The examples print their results; System.out is the program's output, not logging. -->
     <sonar.issue.ignore.multicriteria.e1.ruleKey>java:S106</sonar.issue.ignore.multicriteria.e1.ruleKey>
     <sonar.issue.ignore.multicriteria.e1.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e1.resourceKey>
+    <!-- peek() is the subject of the peek() and lazy-evaluation chapters; the article shows what it prints. -->
+    <sonar.issue.ignore.multicriteria.e2.ruleKey>java:S3864</sonar.issue.ignore.multicriteria.e2.ruleKey>
+    <sonar.issue.ignore.multicriteria.e2.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e2.resourceKey>
+    <!-- Ch5Terminal adds to the unmodifiable list on purpose: the UnsupportedOperationException is the point of the listing. -->
+    <sonar.issue.ignore.multicriteria.e3.ruleKey>javabugs:S6322</sonar.issue.ignore.multicriteria.e3.ruleKey>
+    <sonar.issue.ignore.multicriteria.e3.resourceKey>**/Ch5Terminal.java</sonar.issue.ignore.multicriteria.e3.resourceKey>
+    <!-- Ch6Lazy and Ch8Mistakes reuse a consumed stream on purpose: the IllegalStateException is the point of the listing. -->
+    <sonar.issue.ignore.multicriteria.e4.ruleKey>javabugs:S3959</sonar.issue.ignore.multicriteria.e4.ruleKey>
+    <sonar.issue.ignore.multicriteria.e4.resourceKey>**/Ch*.java</sonar.issue.ignore.multicriteria.e4.resourceKey>
   </properties>
 
   <build>

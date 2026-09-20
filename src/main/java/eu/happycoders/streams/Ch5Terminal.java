@@ -34,7 +34,7 @@ public class Ch5Terminal {
     System.out.println(mutable.size());
     try {
       titles.add("Emma");
-    } catch (UnsupportedOperationException e) {
+    } catch (UnsupportedOperationException _) {
       System.out.println("UnsupportedOperationException");
     }
 
@@ -42,7 +42,8 @@ public class Ch5Terminal {
     Map<String, Integer> yearByTitle = BOOKS.stream().collect(toMap(Book::title, Book::year));
     System.out.println(yearByTitle.get("Dracula"));
     try {
-      BOOKS.stream().collect(toMap(Book::author, Book::title));
+      Map<String, String> titleByAuthor = BOOKS.stream().collect(toMap(Book::author, Book::title));
+      System.out.println(titleByAuthor);
     } catch (IllegalStateException e) {
       System.out.println(e.getMessage());
     }

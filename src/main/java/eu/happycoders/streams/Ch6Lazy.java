@@ -47,7 +47,7 @@ public class Ch6Lazy {
     Stream<Book> books = BOOKS.stream();
     System.out.println(books.count());
     try {
-      books.count();
+      System.out.println(books.count());
     } catch (IllegalStateException e) {
       System.out.println("IllegalStateException: " + e.getMessage());
     }

@@ -9,6 +9,8 @@ import java.util.List;
 
 public class Library {
 
+  private Library() {}
+
   public static final List<Book> BOOKS =
       List.of(
           new Book("Pride and Prejudice", "Jane Austen", 1813, NOVEL),

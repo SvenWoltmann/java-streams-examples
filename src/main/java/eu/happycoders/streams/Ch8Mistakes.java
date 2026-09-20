@@ -24,15 +24,15 @@ public class Ch8Mistakes {
     System.out.println(titlesCollected);
 
     System.out.println("== checked exceptions");
-    Path a = Files.createTempFile("a", ".txt");
-    Path b = Files.createTempFile("b", ".txt");
+    Path a = Path.of("target", "a.txt");
+    Path b = Path.of("target", "b.txt");
+    Files.createDirectories(a.getParent());
     Files.writeString(a, "Dracula\n");
     Files.writeString(b, "Kidnapped\nMoby-Dick\n");
     List<Path> files = List.of(a, b);
-    // does not compile: Files.readAllLines() throws IOException
-    // List<String> lines = files.stream()
-    //     .flatMap(file -> Files.readAllLines(file).stream())
-    //     .toList();
+    // Calling Files.readAllLines(file) directly in the flatMap() lambda does not
+    // compile: the method throws the checked IOException, and Function.apply()
+    // does not declare it. readLines() below wraps it into UncheckedIOException.
     List<String> lines = files.stream().flatMap(file -> readLines(file).stream()).toList();
     System.out.println(lines);
 
@@ -48,8 +48,8 @@ public class Ch8Mistakes {
     Stream<Book> stream = BOOKS.stream();
     stream.forEach(book -> {});
     try {
-      stream.count();
-    } catch (IllegalStateException e) {
+      System.out.println(stream.count());
+    } catch (IllegalStateException _) {
       System.out.println("IllegalStateException");
     }
   }

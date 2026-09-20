@@ -40,7 +40,8 @@ public class Ch3Sources {
     System.out.println(DoubleStream.of(1.5, 2.5).average().getAsDouble());
 
     System.out.println("== Files.lines()");
-    Path file = Files.createTempFile("books", ".txt");
+    Path file = Path.of("target", "books.txt");
+    Files.createDirectories(file.getParent());
     Files.writeString(file, "Dracula\nFrankenstein\nKidnapped\n");
     try (Stream<String> lines = Files.lines(file)) {
       System.out.println(lines.filter(line -> line.startsWith("D")).toList());

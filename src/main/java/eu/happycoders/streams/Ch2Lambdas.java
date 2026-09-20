@@ -44,7 +44,5 @@ public class Ch2Lambdas {
     List<String> titles = BOOKS.stream().map(Book::title).toList();
     titles.forEach(System.out::println);
     System.out.println(titles.stream().map(String::toUpperCase).toList());
-    Function<String, Integer> length = String::length;
-    System.out.println(length.apply("Dracula"));
   }
 }
