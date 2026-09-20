@@ -42,7 +42,10 @@ public class Ch2Lambdas {
 
     System.out.println("== method references");
     List<String> titles = BOOKS.stream().map(Book::title).toList();
+    List<String> years = BOOKS.stream().map(Book::year).map(String::valueOf).toList();
     titles.forEach(System.out::println);
-    System.out.println(titles.stream().map(String::toUpperCase).toList());
+    String[] titleArray = titles.toArray(String[]::new);
+    System.out.println(years);
+    System.out.println(titleArray.length);
   }
 }
