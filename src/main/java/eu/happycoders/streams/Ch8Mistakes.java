@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Ch8Mistakes {
@@ -37,7 +38,13 @@ public class Ch8Mistakes {
     System.out.println(lines);
 
     System.out.println("== the loop wins");
-    System.out.println(titlesUpTo(BOOKS, 50));
+    int[][] matrix = {
+      {1, 0, 2},
+      {0, 2, 0},
+      {2, 1, 0}
+    };
+    System.out.println(findAllWithLoop(matrix, 2));
+    System.out.println(findAllWithStream(matrix, 2));
 
     System.out.println("== loop is fine");
     int total = 0;
@@ -57,17 +64,28 @@ public class Ch8Mistakes {
     }
   }
 
-  /** Collects titles until their total length would exceed maxTotalLength. */
-  static List<String> titlesUpTo(List<Book> books, int maxTotalLength) {
-    List<String> result = new ArrayList<>();
-    int total = 0;
-    for (Book book : books) {
-      total += book.title().length();
-      if (total > maxTotalLength) {
-        break;
+  /** Coordinates of every cell that holds the given value - as a nested loop. */
+  static List<String> findAllWithLoop(int[][] matrix, int value) {
+    List<String> hits = new ArrayList<>();
+    for (int row = 0; row < matrix.length; row++) {
+      for (int col = 0; col < matrix[row].length; col++) {
+        if (matrix[row][col] == value) {
+          hits.add(row + "/" + col);
+        }
       }
-      result.add(book.title());
     }
-    return result;
+    return hits;
+  }
+
+  /** The same thing as a stream pipeline. */
+  static List<String> findAllWithStream(int[][] matrix, int value) {
+    return IntStream.range(0, matrix.length)
+        .boxed()
+        .flatMap(
+            row ->
+                IntStream.range(0, matrix[row].length)
+                    .filter(col -> matrix[row][col] == value)
+                    .mapToObj(col -> row + "/" + col))
+        .toList();
   }
 }
