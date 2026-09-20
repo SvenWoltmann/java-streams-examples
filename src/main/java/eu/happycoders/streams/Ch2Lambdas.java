@@ -26,8 +26,13 @@ public class Ch2Lambdas {
     System.out.println(BOOKS.stream().filter(publishedBefore1850Lambda).toList());
 
     System.out.println("== lambda forms");
+    // Inferred parameter type: the compiler reads Book from Function<Book, String>
     Function<Book, String> title = book -> book.title();
+
+    // Explicit parameter type - needed only where the compiler cannot infer it
     Function<Book, String> titleTyped = (Book book) -> book.title();
+
+    // Block body: more than one statement, and therefore its own return
     Function<Book, String> titleBlock =
         book -> {
           String t = book.title();
@@ -41,9 +46,16 @@ public class Ch2Lambdas {
     System.out.println(titleBlock.apply(BOOKS.get(1)));
 
     System.out.println("== method references");
+    // Instance method of a type: title() is called on every element
     List<String> titles = BOOKS.stream().map(Book::title).toList();
+
+    // Static method: every element becomes the argument of String.valueOf()
     List<String> years = BOOKS.stream().map(Book::year).map(String::valueOf).toList();
+
+    // Method of a specific object: println() on System.out, element as argument
     titles.forEach(System.out::println);
+
+    // Constructor: creates the array that toArray() writes the titles into
     String[] titleArray = titles.toArray(String[]::new);
     System.out.println(years);
     System.out.println(titleArray.length);
