@@ -36,6 +36,9 @@ public class Ch8Mistakes {
     List<String> lines = files.stream().flatMap(FileUtil::readLines).toList();
     System.out.println(lines);
 
+    System.out.println("== the loop wins");
+    System.out.println(titlesUpTo(BOOKS, 50));
+
     System.out.println("== loop is fine");
     int total = 0;
     for (Book book : BOOKS) {
@@ -52,5 +55,19 @@ public class Ch8Mistakes {
     } catch (IllegalStateException _) {
       System.out.println("IllegalStateException");
     }
+  }
+
+  /** Collects titles until their total length would exceed maxTotalLength. */
+  static List<String> titlesUpTo(List<Book> books, int maxTotalLength) {
+    List<String> result = new ArrayList<>();
+    int total = 0;
+    for (Book book : books) {
+      total += book.title().length();
+      if (total > maxTotalLength) {
+        break;
+      }
+      result.add(book.title());
+    }
+    return result;
   }
 }
