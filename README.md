@@ -1,7 +1,6 @@
 # Java Streams Examples
 
 [![Build](https://github.com/SvenWoltmann/java-streams-examples/actions/workflows/build.yml/badge.svg)](https://github.com/SvenWoltmann/java-streams-examples/actions/workflows/build.yml)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=SvenWoltmann_java-streams-examples&metric=coverage)](https://sonarcloud.io/dashboard?id=SvenWoltmann_java-streams-examples)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=SvenWoltmann_java-streams-examples&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=SvenWoltmann_java-streams-examples)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=SvenWoltmann_java-streams-examples&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=SvenWoltmann_java-streams-examples)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=SvenWoltmann_java-streams-examples&metric=security_rating)](https://sonarcloud.io/dashboard?id=SvenWoltmann_java-streams-examples)

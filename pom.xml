@@ -32,7 +32,7 @@
     <!-- The classes are the runnable listings of the article; there is nothing to unit-test in them. -->
     <sonar.coverage.exclusions>**/*.java</sonar.coverage.exclusions>
 
-    <sonar.issue.ignore.multicriteria>e1,e2,e3,e4</sonar.issue.ignore.multicriteria>
+    <sonar.issue.ignore.multicriteria>e1,e2,e3,e4,e5,e6,e7</sonar.issue.ignore.multicriteria>
     <!-- The examples print their results; System.out is the program's output, not logging. -->
     <sonar.issue.ignore.multicriteria.e1.ruleKey>java:S106</sonar.issue.ignore.multicriteria.e1.ruleKey>
     <sonar.issue.ignore.multicriteria.e1.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e1.resourceKey>
@@ -45,6 +45,13 @@
     <!-- Ch6Lazy and Ch8Mistakes reuse a consumed stream on purpose: the IllegalStateException is the point of the listing. -->
     <sonar.issue.ignore.multicriteria.e4.ruleKey>javabugs:S3959</sonar.issue.ignore.multicriteria.e4.ruleKey>
     <sonar.issue.ignore.multicriteria.e4.resourceKey>**/Ch*.java</sonar.issue.ignore.multicriteria.e4.resourceKey>
+    <!-- Ch2Lambdas shows the anonymous class and the plain lambda first; the next section of the article converts them into a lambda and a method reference. -->
+    <sonar.issue.ignore.multicriteria.e5.ruleKey>java:S1604</sonar.issue.ignore.multicriteria.e5.ruleKey>
+    <sonar.issue.ignore.multicriteria.e5.resourceKey>**/Ch2Lambdas.java</sonar.issue.ignore.multicriteria.e5.resourceKey>
+    <sonar.issue.ignore.multicriteria.e6.ruleKey>java:S9357</sonar.issue.ignore.multicriteria.e6.ruleKey>
+    <sonar.issue.ignore.multicriteria.e6.resourceKey>**/Ch2Lambdas.java</sonar.issue.ignore.multicriteria.e6.resourceKey>
+    <sonar.issue.ignore.multicriteria.e7.ruleKey>java:S1612</sonar.issue.ignore.multicriteria.e7.ruleKey>
+    <sonar.issue.ignore.multicriteria.e7.resourceKey>**/Ch2Lambdas.java</sonar.issue.ignore.multicriteria.e7.resourceKey>
   </properties>
 
   <build>

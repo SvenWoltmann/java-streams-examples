@@ -16,6 +16,5 @@ public class Ch7Parallel {
     System.out.println("== parallel reduce is still correct");
     long sum = IntStream.rangeClosed(1, 1_000_000).parallel().asLongStream().sum();
     System.out.println(sum);
-    System.out.println(BOOKS.stream().parallel().isParallel());
   }
 }
