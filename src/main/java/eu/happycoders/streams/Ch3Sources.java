@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.DoubleStream;
@@ -33,11 +34,20 @@ public class Ch3Sources {
     System.out.println(Arrays.stream(years).sum());
 
     System.out.println("== primitive streams");
-    IntStream oneToFive = IntStream.rangeClosed(1, 5);
-    System.out.println(oneToFive.sum());
-    System.out.println(IntStream.range(0, 3).boxed().toList());
-    System.out.println(LongStream.of(1L, 2L, 3L).max().getAsLong());
-    System.out.println(DoubleStream.of(1.5, 2.5).average().getAsDouble());
+    int sum = IntStream.rangeClosed(1, 5).sum();
+    int sumExclusive = IntStream.range(1, 5).sum();
+    double average = DoubleStream.of(1.5, 2.5).average().getAsDouble();
+    long max = LongStream.of(1L, 2L, 3L).max().getAsLong();
+    IntSummaryStatistics stats = IntStream.rangeClosed(1, 5).summaryStatistics();
+    System.out.println(sum);
+    System.out.println(sumExclusive);
+    System.out.println(average);
+    System.out.println(max);
+    System.out.println(stats);
+
+    System.out.println("== boxed()");
+    List<Integer> numbers = IntStream.range(0, 3).boxed().toList();
+    System.out.println(numbers);
 
     System.out.println("== Files.lines()");
     Path file = Path.of("target", "books.txt");
