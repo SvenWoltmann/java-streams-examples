@@ -4,6 +4,8 @@ import static eu.happycoders.streams.Library.BOOKS;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.mapping;
+import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
 import static java.util.stream.Collectors.toSet;
 
@@ -42,8 +44,8 @@ public class Ch5Terminal {
     Map<String, Integer> yearByTitle = BOOKS.stream().collect(toMap(Book::title, Book::year));
     System.out.println(yearByTitle.get("Dracula"));
     try {
-      Map<String, String> titleByAuthor = BOOKS.stream().collect(toMap(Book::author, Book::title));
-      System.out.println(titleByAuthor);
+      Map<String, Integer> yearByAuthor = BOOKS.stream().collect(toMap(Book::author, Book::year));
+      System.out.println(yearByAuthor);
     } catch (IllegalStateException e) {
       System.out.println(e.getMessage());
     }
@@ -56,8 +58,12 @@ public class Ch5Terminal {
     System.out.println(authors);
 
     System.out.println("== groupingBy()");
-    Map<Genre, List<Book>> byGenre = BOOKS.stream().collect(groupingBy(Book::genre));
-    System.out.println(byGenre.get(Genre.GOTHIC));
+    Map<String, List<Integer>> yearsByAuthor =
+        BOOKS.stream().collect(groupingBy(Book::author, mapping(Book::year, toList())));
+    System.out.println(yearsByAuthor);
+    Map<Genre, List<String>> titlesByGenre =
+        BOOKS.stream().collect(groupingBy(Book::genre, mapping(Book::title, toList())));
+    System.out.println(titlesByGenre);
     Map<Genre, Long> countByGenre = BOOKS.stream().collect(groupingBy(Book::genre, counting()));
     System.out.println(countByGenre);
 
