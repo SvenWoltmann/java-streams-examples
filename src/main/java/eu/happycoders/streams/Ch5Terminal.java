@@ -51,7 +51,7 @@ public class Ch5Terminal {
     }
     Map<String, String> latestTitleByAuthor =
         BOOKS.stream().collect(toMap(Book::author, Book::title, (first, second) -> second));
-    System.out.println(latestTitleByAuthor.get("H. G. Wells"));
+    System.out.println(latestTitleByAuthor.get("Jules Verne"));
 
     System.out.println("== joining()");
     String authors = BOOKS.stream().map(Book::author).distinct().collect(joining(", "));
