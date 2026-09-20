@@ -3,7 +3,6 @@ package eu.happycoders.streams;
 import static eu.happycoders.streams.Library.BOOKS;
 
 import java.io.IOException;
-import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -32,8 +31,9 @@ public class Ch8Mistakes {
     List<Path> files = List.of(a, b);
     // Calling Files.readAllLines(file) directly in the flatMap() lambda does not
     // compile: the method throws the checked IOException, and Function.apply()
-    // does not declare it. readLines() below wraps it into UncheckedIOException.
-    List<String> lines = files.stream().flatMap(file -> readLines(file).stream()).toList();
+    // does not declare it. FileUtil.readLines() wraps it into UncheckedIOException
+    // and returns a Stream, so a method reference is enough here.
+    List<String> lines = files.stream().flatMap(FileUtil::readLines).toList();
     System.out.println(lines);
 
     System.out.println("== loop is fine");
@@ -51,14 +51,6 @@ public class Ch8Mistakes {
       System.out.println(stream.count());
     } catch (IllegalStateException _) {
       System.out.println("IllegalStateException");
-    }
-  }
-
-  static List<String> readLines(Path file) {
-    try {
-      return Files.readAllLines(file);
-    } catch (IOException e) {
-      throw new UncheckedIOException(e);
     }
   }
 }
