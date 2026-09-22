@@ -64,7 +64,9 @@ public class Ch2Syntax {
     System.out.println(BOOKS.stream().sorted(byYearDescendingRef).map(Book::year).toList());
 
     System.out.println("== var (Java 11)");
-    // var gives an annotation a place to sit; it is all or nothing
+    // var gives an annotation a place to sit: (@Nonnull var book) -> ... compiles,
+    // (@Nonnull book) -> ... is a syntax error. The three forms cannot be mixed - either
+    // all parameters without a type, all with a type, or all with var.
     BiFunction<Book, Book, Integer> yearDifference = (var a, var b) -> a.year() - b.year();
     System.out.println(yearDifference.apply(BOOKS.get(1), BOOKS.get(0)));
 
