@@ -11,6 +11,10 @@ The code refers to the following articles:
 * English: [Java Streams (with Examples)](https://www.happycoders.eu/java/java-streams/)
 * German: [Java Streams (mit Beispielen)](https://www.happycoders.eu/de/java/java-streams/)
 
+and, in the package `eu.happycoders.lambdas`, to the articles
+* English: [Java Lambda Expressions (with Examples)](https://www.happycoders.eu/java/java-lambda-expressions/)
+* German: [Java Lambda-Ausdrücke (mit Beispielen)](https://www.happycoders.eu/de/java/java-lambda-ausdruecke/)
+
 ## Contents
 
 All examples work on the same data model: the records `Book` and `Author`, the enum `Genre`, and the `Library` class with eleven public-domain classics.
@@ -25,6 +29,17 @@ Every class with a `main()` method is one chapter of the article and prints the 
 * `Ch6Lazy` – lazy evaluation: element-by-element processing, short-circuiting, stateful operations, single use
 * `Ch7Parallel` – parallel streams
 * `Ch8Mistakes` – common mistakes and how to avoid them
+
+The lambda article has its own chapters in `eu.happycoders.lambdas`, on the same data model (run them with `java -cp target/classes eu.happycoders.lambdas.<ClassName>`):
+
+* `Ch1AnonymousVsLambda` – the same comparator as an anonymous class and as a lambda
+* `Ch2Syntax` – parameters, expression and block body, explicit types, `var`, the unnamed parameter `_`
+* `Ch3TargetType` – the four contexts of a target type, functional interfaces, overloaded methods
+* `Ch4VariableAccess` – effectively final, the one-element-array workaround, `this` (with `Scope`)
+* `Ch5MethodReferences` – the four kinds of method references, `this::` and `super::`, an ambiguous reference
+* `Ch6WhereUsed` – lambdas in `Comparator`, collections, maps, `Optional`, and threads
+* `Ch7UnderTheHood` – the generated class, identity of capturing and non-capturing lambdas (with `LambdaDemo` for `javap`)
+* `Ch8Mistakes` – a lambda that is too long, recursion, a lambda in a stack trace (with `LambdaTrace`)
 
 The code requires Java 25 or newer.
 

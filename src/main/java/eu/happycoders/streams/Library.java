@@ -4,8 +4,10 @@ import static eu.happycoders.streams.Genre.*;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Library {
 
@@ -32,4 +34,17 @@ public class Library {
           .stream()
           .map(entry -> new Author(entry.getKey(), entry.getValue()))
           .toList();
+
+  /**
+   * Title, author initials, and decade of a book - the body of the "lambda that is too long" in the
+   * lambda article, moved into a method that a method reference can name.
+   */
+  public static String label(Book book) {
+    String decade = (book.year() / 10 * 10) + "s";
+    String authorInitials =
+        Arrays.stream(book.author().split(" "))
+            .map(name -> name.substring(0, 1))
+            .collect(Collectors.joining());
+    return book.title() + " (" + authorInitials + ", " + decade + ")";
+  }
 }
