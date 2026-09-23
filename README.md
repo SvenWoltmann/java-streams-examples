@@ -35,7 +35,7 @@ The lambda article has its own chapters in `eu.happycoders.lambdas`, on the same
 * `Ch1AnonymousVsLambda` – the same comparator as an anonymous class and as a lambda
 * `Ch2Syntax` – parameters, expression and block body, explicit types, `var`, the unnamed parameter `_`
 * `Ch3TargetType` – the four contexts of a target type, functional interfaces, overloaded methods
-* `Ch4VariableAccess` – effectively final, the one-element-array workaround, `this` (with `Scope`)
+* `Ch4VariableAccess` – effectively final, the one-element-array workaround, `this` (with `Scope` and `BookFilter`)
 * `Ch5MethodReferences` – the four kinds of method references, `this::` and `super::`, an ambiguous reference
 * `Ch6WhereUsed` – lambdas in `Comparator`, collections, maps, `Optional`, and threads
 * `Ch7UnderTheHood` – the generated class, identity of capturing and non-capturing lambdas (with `LambdaDemo` for `javap`)

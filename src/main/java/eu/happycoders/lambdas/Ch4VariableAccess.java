@@ -38,5 +38,6 @@ public class Ch4VariableAccess {
 
     System.out.println("== this means the enclosing instance");
     new Scope().run();
+    System.out.println(new BookFilter(1890).recentTitles());
   }
 }
