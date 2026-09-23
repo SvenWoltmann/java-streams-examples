@@ -1,5 +1,8 @@
 package eu.happycoders.lambdas;
 
+import eu.happycoders.streams.Book;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
@@ -20,6 +23,14 @@ public class Ch7UnderTheHood {
     Predicate<Integer> greaterThanFiveAgain = greaterThan(5);
     System.out.println(greaterThanFive == greaterThanFiveAgain);
     System.out.println(greaterThanFive.equals(greaterThanFiveAgain));
+
+    System.out.println("== removing a lambda from a list needs the same reference");
+    Predicate<Book> after1890 = book -> book.year() > 1890;
+    Predicate<Book> sameCondition = book -> book.year() > 1890;
+
+    List<Predicate<Book>> filters = new ArrayList<>(List.of(after1890));
+    System.out.println(filters.remove(sameCondition)); // false - same body, different object
+    System.out.println(filters.remove(after1890)); // true
   }
 
   static Supplier<String> nonCapturing() {
