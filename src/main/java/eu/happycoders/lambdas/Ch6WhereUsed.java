@@ -9,6 +9,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Ch6WhereUsed {
 
@@ -28,6 +29,11 @@ public class Ch6WhereUsed {
       byAuthor.computeIfAbsent(book.author(), _ -> new ArrayList<>()).add(book);
     }
     System.out.println(byAuthor.get("H. G. Wells").stream().map(Book::title).toList());
+
+    System.out.println("== the same grouping with a stream and groupingBy()");
+    Map<String, List<Book>> byAuthorStream =
+        BOOKS.stream().collect(Collectors.groupingBy(Book::author));
+    System.out.println(byAuthorStream.equals(byAuthor));
 
     System.out.println("== Optional: map() and orElseGet()");
     String firstGothicTitle =
