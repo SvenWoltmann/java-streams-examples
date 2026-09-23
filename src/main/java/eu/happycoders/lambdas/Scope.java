@@ -5,10 +5,8 @@ package eu.happycoders.lambdas;
  */
 public class Scope {
 
-  private final String name = "enclosing instance";
-
   void run() {
-    Runnable lambda = () -> System.out.println(this.name);
+    Runnable lambda = () -> System.out.println(this.getClass().getName());
     Runnable anonymous =
         new Runnable() {
           @Override

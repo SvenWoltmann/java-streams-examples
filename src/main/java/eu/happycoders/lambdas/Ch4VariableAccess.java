@@ -4,6 +4,7 @@ import static eu.happycoders.streams.Library.BOOKS;
 
 import eu.happycoders.streams.Book;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Ch4VariableAccess {
 
@@ -15,12 +16,17 @@ public class Ch4VariableAccess {
 
     // Does not compile - count is not effectively final:
     // int count = 0;
-    // BOOKS.forEach(book -> count++);
+    // BOOKS.stream().forEach(book -> count++);
 
-    System.out.println("== the one-element-array workaround (don't)");
+    System.out.println("== the one-element-array workaround (don't: race conditions in parallel)");
     int[] count = {0};
-    BOOKS.forEach(book -> count[0]++);
+    BOOKS.stream().forEach(book -> count[0]++);
     System.out.println(count[0]);
+
+    System.out.println("== AtomicInteger (thread-safe, but still a side effect)");
+    AtomicInteger atomicCount = new AtomicInteger();
+    BOOKS.stream().forEach(book -> atomicCount.incrementAndGet());
+    System.out.println(atomicCount.get());
 
     System.out.println("== let the pipeline compute the value (do)");
     long counted = BOOKS.stream().count();
