@@ -10,9 +10,18 @@ import java.util.stream.Collectors;
 
 public class Ch8Mistakes {
 
-  /** Recursion through a field works, because a field has a default value before it is assigned. */
+  /**
+   * Recursion through a field compiles if the lambda calls itself through {@code this}: the field
+   * exists before anything is assigned to it. Through its simple name, it fails with
+   * "self-reference in initializer".
+   */
   private final Function<Integer, Integer> factorial =
       n -> n <= 1 ? 1 : n * this.factorial.apply(n - 1);
+
+  /** The simpler solution: a named method that calls itself. */
+  static int factorial(int n) {
+    return n <= 1 ? 1 : n * factorial(n - 1);
+  }
 
   static void main() {
     // Does not compile - Runnable.run() does not declare InterruptedException:
@@ -42,6 +51,7 @@ public class Ch8Mistakes {
     // Function<Integer, Integer> factorial =
     //     n -> n <= 1 ? 1 : n * factorial.apply(n - 1);
     System.out.println(new Ch8Mistakes().factorial.apply(5));
+    System.out.println(factorial(5));
 
     System.out.println("== a lambda in a stack trace (see also LambdaTrace)");
     try {
