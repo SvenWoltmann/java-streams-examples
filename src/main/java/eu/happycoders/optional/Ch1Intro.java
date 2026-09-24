@@ -14,6 +14,14 @@ public class Ch1Intro {
     Optional<Book> firstGothic = BOOKS.stream().filter(book -> book.genre() == GOTHIC).findFirst();
     System.out.println(firstGothic);
 
+    System.out.println("== a method that returns null: the signature does not say so");
+    try {
+      Book book = Ch5Transforming.findByTitleOrNull("Ulysses");
+      System.out.println(book.year());
+    } catch (NullPointerException e) {
+      System.out.println(e);
+    }
+
     System.out.println("== the two methods of the examples");
     System.out.println(Library.findByTitle("Dracula"));
     System.out.println(Library.findByTitle("Ulysses"));

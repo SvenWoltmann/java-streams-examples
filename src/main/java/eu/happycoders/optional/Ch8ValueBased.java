@@ -16,6 +16,12 @@ public class Ch8ValueBased {
     System.out.println(a.equals(b));
     System.out.println(a == b);
 
+    System.out.println("== two equal but distinct strings");
+    Optional<String> c = Optional.of(new String("Dracula"));
+    Optional<String> d = Optional.of(new String("Dracula"));
+    System.out.println(c.equals(d));
+    System.out.println(c == d);
+
     System.out.println("== synchronizing on an Optional");
     Object lock = a;
     try {
