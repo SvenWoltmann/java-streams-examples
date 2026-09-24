@@ -5,8 +5,10 @@ import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Library {
@@ -46,5 +48,21 @@ public class Library {
             .map(name -> name.substring(0, 1))
             .collect(Collectors.joining());
     return book.title() + " (" + authorInitials + ", " + decade + ")";
+  }
+
+  /** The book with exactly this title - or an empty {@code Optional}, if the library has none. */
+  public static Optional<Book> findByTitle(String title) {
+    return BOOKS.stream().filter(book -> book.title().equals(title)).findFirst();
+  }
+
+  /**
+   * The next book by the same author, i.e., the one published next after the given one - or an
+   * empty {@code Optional}, if the author has no later book in the library.
+   */
+  public static Optional<Book> nextBookBy(Book book) {
+    return BOOKS.stream()
+        .filter(other -> other.author().equals(book.author()))
+        .filter(other -> other.year() > book.year())
+        .min(Comparator.comparingInt(Book::year));
   }
 }
