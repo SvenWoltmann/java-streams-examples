@@ -61,8 +61,8 @@ public class Library {
    */
   public static Optional<Book> nextBookBy(Book book) {
     return BOOKS.stream()
-        .filter(other -> other.author().equals(book.author()))
-        .filter(other -> other.year() > book.year())
+        .filter(otherBook -> otherBook.author().equals(book.author()))
+        .filter(otherBook -> otherBook.year() > book.year())
         .min(Comparator.comparingInt(Book::year));
   }
 }

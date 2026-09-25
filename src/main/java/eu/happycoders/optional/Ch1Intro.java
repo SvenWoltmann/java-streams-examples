@@ -16,7 +16,7 @@ public class Ch1Intro {
 
     System.out.println("== a method that returns null: the signature does not say so");
     try {
-      Book book = Ch5Transforming.findByTitleOrNull("Ulysses");
+      Book book = LibraryBeforeJava8.findByTitle("Ulysses");
       System.out.println(book.year());
     } catch (NullPointerException e) {
       System.out.println(e);

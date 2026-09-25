@@ -14,41 +14,6 @@ public class Ch5Transforming {
     return BOOKS.stream().filter(book -> book.title().equalsIgnoreCase(title)).findFirst();
   }
 
-  // The same two lookups as Library.findByTitle() and Library.nextBookBy(), written the way
-  // methods returned "no result" before Java 8: as null.
-
-  static Book findByTitleOrNull(String title) {
-    for (Book book : BOOKS) {
-      if (book.title().equals(title)) {
-        return book;
-      }
-    }
-    return null;
-  }
-
-  static Book nextBookByOrNull(Book book) {
-    Book next = null;
-    for (Book other : BOOKS) {
-      if (other.author().equals(book.author())
-          && other.year() > book.year()
-          && (next == null || other.year() < next.year())) {
-        next = other;
-      }
-    }
-    return next;
-  }
-
-  static String nextTitleWithNullChecks(String title) {
-    Book book = findByTitleOrNull(title);
-    if (book != null) {
-      Book next = nextBookByOrNull(book);
-      if (next != null) {
-        return next.title();
-      }
-    }
-    return "(none)";
-  }
-
   static String nextTitle(String title) {
     return findByTitle(title).flatMap(Library::nextBookBy).map(Book::title).orElse("(none)");
   }
@@ -79,7 +44,12 @@ public class Ch5Transforming {
 
     System.out.println("== nested null checks vs. a chain");
     for (String title : new String[] {"Treasure Island", "Dracula", "Ulysses"}) {
-      System.out.println(title + ": " + nextTitleWithNullChecks(title) + " / " + nextTitle(title));
+      System.out.println(
+          title
+              + ": "
+              + LibraryBeforeJava8.nextTitleWithNullChecks(title)
+              + " / "
+              + nextTitle(title));
     }
   }
 }
