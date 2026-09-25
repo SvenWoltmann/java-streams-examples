@@ -7,8 +7,8 @@ import java.util.Optional;
 
 public class Ch3GettingTheValue {
 
-  static String defaultTitle() {
-    System.out.println("  computing the default title");
+  static String fallbackTitle() {
+    System.out.println("  computing the fallback title");
     return "(unknown)";
   }
 
@@ -20,11 +20,11 @@ public class Ch3GettingTheValue {
     System.out.println(missing);
 
     System.out.println("== orElse() evaluates its argument even if a value is present");
-    System.out.println(findByTitle("Dracula").map(Book::title).orElse(defaultTitle()));
+    System.out.println(findByTitle("Dracula").map(Book::title).orElse(fallbackTitle()));
 
     System.out.println("== orElseGet() calls the supplier only if the Optional is empty");
-    System.out.println(findByTitle("Dracula").map(Book::title).orElseGet(() -> defaultTitle()));
-    System.out.println(findByTitle("Ulysses").map(Book::title).orElseGet(() -> defaultTitle()));
+    System.out.println(findByTitle("Dracula").map(Book::title).orElseGet(() -> fallbackTitle()));
+    System.out.println(findByTitle("Ulysses").map(Book::title).orElseGet(() -> fallbackTitle()));
 
     System.out.println("== orElseThrow() without an argument");
     try {
