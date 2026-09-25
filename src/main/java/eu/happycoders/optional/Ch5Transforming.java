@@ -20,18 +20,21 @@ public class Ch5Transforming {
 
   static void main() {
     System.out.println("== map()");
-    Optional<Integer> year = findByTitle("Dracula").map(Book::year);
-    System.out.println(year);
-    System.out.println(findByTitle("Ulysses").map(Book::year));
+    Optional<Integer> draculaYear = findByTitle("Dracula").map(Book::year);
+    System.out.println(draculaYear);
+    Optional<Integer> ulyssesYear = findByTitle("Ulysses").map(Book::year);
+    System.out.println(ulyssesYear);
 
     System.out.println("== map() with a function that returns an Optional");
     Optional<Optional<Book>> nested = findByTitle("Treasure Island").map(Library::nextBookBy);
     System.out.println(nested);
 
     System.out.println("== flatMap()");
-    Optional<Book> next = findByTitle("Treasure Island").flatMap(Library::nextBookBy);
-    System.out.println(next);
-    System.out.println(findByTitle("Dracula").flatMap(Library::nextBookBy));
+    Optional<Book> afterTreasureIsland =
+        findByTitle("Treasure Island").flatMap(Library::nextBookBy);
+    System.out.println(afterTreasureIsland);
+    Optional<Book> afterDracula = findByTitle("Dracula").flatMap(Library::nextBookBy);
+    System.out.println(afterDracula);
 
     System.out.println("== filter()");
     System.out.println(findByTitle("Treasure Island").filter(book -> book.genre() == ADVENTURE));
