@@ -26,8 +26,11 @@ public class Ch5Transforming {
     System.out.println(ulyssesYear);
 
     System.out.println("== map() with a function that returns an Optional");
-    Optional<Optional<Book>> nested = findByTitle("Treasure Island").map(Library::nextBookBy);
-    System.out.println(nested);
+    Optional<Optional<Book>> nestedAfterTreasureIsland =
+        findByTitle("Treasure Island").map(Library::nextBookBy);
+    System.out.println(nestedAfterTreasureIsland);
+    Optional<Optional<Book>> nestedAfterDracula = findByTitle("Dracula").map(Library::nextBookBy);
+    System.out.println(nestedAfterDracula);
 
     System.out.println("== flatMap()");
     Optional<Book> afterTreasureIsland =
@@ -40,10 +43,14 @@ public class Ch5Transforming {
     System.out.println(findByTitle("Treasure Island").filter(book -> book.genre() == ADVENTURE));
     System.out.println(findByTitle("Dracula").filter(book -> book.genre() == ADVENTURE));
 
-    System.out.println("== or()");
-    Optional<Book> book =
+    System.out.println("== or() vs. orElseGet()");
+    Optional<Book> withOr =
         findByTitle("treasure island").or(() -> findByTitleIgnoreCase("treasure island"));
-    System.out.println(book);
+    System.out.println(withOr);
+    Book withOrElseGet =
+        findByTitle("treasure island")
+            .orElseGet(() -> findByTitleIgnoreCase("treasure island").orElse(null));
+    System.out.println(withOrElseGet);
 
     System.out.println("== nested null checks vs. a chain");
     for (String title : new String[] {"Treasure Island", "Dracula", "Ulysses"}) {
