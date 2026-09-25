@@ -6,14 +6,14 @@ import eu.happycoders.streams.Book;
 
 /**
  * The two lookups of {@code Library}, written the way methods signaled "no result" before Java 8:
- * as {@code null}. They carry the same names as their {@code Optional} counterparts, because the
+ * as {@code null}. Their names do not give that away - "get", like {@code Map.get()} - because the
  * article's point is that the signature alone does not reveal the {@code null}.
  */
 public class LibraryBeforeJava8 {
 
   private LibraryBeforeJava8() {}
 
-  static Book findByTitle(String title) {
+  static Book getByTitle(String title) {
     for (Book book : BOOKS) {
       if (book.title().equals(title)) {
         return book;
@@ -22,7 +22,7 @@ public class LibraryBeforeJava8 {
     return null;
   }
 
-  static Book nextBookBy(Book book) {
+  static Book getNextBookBy(Book book) {
     Book next = null;
     for (Book otherBook : BOOKS) {
       if (otherBook.author().equals(book.author())
@@ -35,9 +35,9 @@ public class LibraryBeforeJava8 {
   }
 
   static String nextTitleWithNullChecks(String title) {
-    Book book = findByTitle(title);
+    Book book = getByTitle(title);
     if (book != null) {
-      Book next = nextBookBy(book);
+      Book next = getNextBookBy(book);
       if (next != null) {
         return next.title();
       }
