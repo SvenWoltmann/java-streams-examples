@@ -4,6 +4,7 @@ import static eu.happycoders.streams.Library.BOOKS;
 
 import eu.happycoders.streams.Book;
 import eu.happycoders.streams.Genre;
+import eu.happycoders.streams.Library;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -50,6 +51,12 @@ public class Ch7WhenToUse {
     System.out.println("== an empty list instead of an Optional<List>");
     System.out.println(booksPublishedIn(1865).size());
     System.out.println(booksPublishedIn(1900));
+
+    System.out.println("== Optional as a collection element");
+    List<String> wishList = List.of("Dracula", "Ulysses", "Moby-Dick", "Beloved");
+    List<Optional<Book>> results = wishList.stream().map(Library::findByTitle).toList();
+    System.out.println(results.size());
+    System.out.println(results.stream().filter(Optional::isEmpty).count());
 
     System.out.println("== Optional is not Serializable");
     try (ObjectOutputStream out = new ObjectOutputStream(new ByteArrayOutputStream())) {
