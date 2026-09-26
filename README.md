@@ -15,6 +15,10 @@ and, in the package `eu.happycoders.lambdas`, to the articles
 * English: [Java Lambda Expressions (with Examples)](https://www.happycoders.eu/java/java-lambda-expressions/)
 * German: [Java Lambda-Ausdrücke (mit Beispielen)](https://www.happycoders.eu/de/java/java-lambda-ausdruecke/)
 
+and, in the package `eu.happycoders.functionalinterfaces`, to the articles
+* English: [Java Functional Interfaces (with Examples)](https://www.happycoders.eu/java/java-functional-interfaces/)
+* German: [Funktionale Interfaces in Java (mit Beispielen)](https://www.happycoders.eu/de/java/java-funktionale-interfaces/)
+
 ## Contents
 
 All examples work on the same data model: the records `Book` and `Author`, the enum `Genre`, and the `Library` class with eleven public-domain classics.
@@ -40,6 +44,19 @@ The lambda article has its own chapters in `eu.happycoders.lambdas`, on the same
 * `Ch6WhereUsed` – lambdas in `Comparator`, collections, maps, `Optional`, and threads
 * `Ch7UnderTheHood` – the generated class, identity of capturing and non-capturing lambdas (with `LambdaDemo` for `javap`)
 * `Ch8Mistakes` – a lambda that is too long, recursion, a lambda in a stack trace (with `LambdaTrace`)
+
+The functional-interfaces article has its chapters in `eu.happycoders.functionalinterfaces` (run them with `java -cp target/classes eu.happycoders.functionalinterfaces.<ClassName>` from the repository root - two chapters read files relative to it):
+
+* `Ch1Definition` – `Comparator` implemented by a named class (`YearComparator`) and by a lambda; the abstract method called directly; default methods
+* `Ch2Annotation` – `@FunctionalInterface` on `TitleFormatter`, the error for a second abstract method, an interface without the annotation
+* `Ch3CoreFour` – `Function`, `Predicate`, `Consumer`, `Supplier` with `andThen()`, `compose()`, `identity()`, `and()`, `or()`, `negate()`, `not()`, `isEqual()`, `orElseGet()`, `toCollection()`
+* `Ch4Operators` – `UnaryOperator` in `List.replaceAll()`, `BinaryOperator` in `reduce()`, `maxBy()`, `Map.merge()`
+* `Ch5TwoParameters` – `BiFunction`, `BiConsumer`, `BiPredicate` in `Map.forEach()`, `computeIfPresent()`, `replaceAll()`, `Files.find()`
+* `Ch6Primitives` – `ToIntFunction`, `IntPredicate`, `IntUnaryOperator`, `IntFunction`, `IntBinaryOperator`, `IntSupplier`, `ObjIntConsumer` on an `IntStream`; boxing
+* `Ch7Wildcards` – `Predicate<? super T>` and `Function<? super T, ? extends R>`, and a method of our own with and without the wildcard
+* `Ch8OutsidePackage` – `Runnable`, `Callable`, `Comparator`, `FileFilter`, `DirectoryStream.Filter`, `TemporalAdjuster`
+* `Ch9Custom` – `TitleFormatter` vs. `Function` (nominal typing), `ThrowingFunction` for checked exceptions
+* `Ch10Mistakes` – `Function<T, Boolean>` instead of `Predicate`, `Function<T, Void>` instead of `Consumer`, `Function<Integer, Integer>` instead of `IntUnaryOperator`
 
 The code requires Java 25 or newer.
 
