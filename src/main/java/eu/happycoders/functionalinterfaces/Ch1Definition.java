@@ -10,7 +10,11 @@ import java.util.List;
 public class Ch1Definition {
 
   static void main() {
-    System.out.println("== a functional interface is an ordinary interface");
+    System.out.println("== the simplest functional interface: Runnable");
+    Runnable printFirstTitle = () -> System.out.println(BOOKS.getFirst().title());
+    printFirstTitle.run();
+
+    System.out.println("== a functional interface may have more methods: Comparator");
     // A named class implements Comparator<Book> ...
     Comparator<Book> byYearClass = new YearComparator();
     // ... and so does a lambda - both are implementations of the one abstract method compare()

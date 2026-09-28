@@ -47,7 +47,7 @@ The lambda article has its own chapters in `eu.happycoders.lambdas`, on the same
 
 The functional-interfaces article has its chapters in `eu.happycoders.functionalinterfaces` (run them with `java -cp target/classes eu.happycoders.functionalinterfaces.<ClassName>` from the repository root - two chapters read files relative to it):
 
-* `Ch1Definition` – `Comparator` implemented by a named class (`YearComparator`) and by a lambda; the abstract method called directly; default methods
+* `Ch1Definition` – `Runnable` as the simplest case; `Comparator` implemented by a named class (`YearComparator`) and by a lambda; the abstract method called directly; default methods
 * `Ch2Annotation` – `@FunctionalInterface` on `TitleFormatter`, the error for a second abstract method, an interface without the annotation
 * `Ch3CoreFour` – `Function`, `Predicate`, `Consumer`, `Supplier` with `andThen()`, `compose()`, `identity()`, `and()`, `or()`, `negate()`, `not()`, `isEqual()`, `orElseGet()`, `toCollection()`
 * `Ch4Operators` – `UnaryOperator` in `List.replaceAll()`, `BinaryOperator` in `reduce()`, `maxBy()`, `Map.merge()`
