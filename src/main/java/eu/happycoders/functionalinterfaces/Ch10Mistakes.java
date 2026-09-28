@@ -8,6 +8,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.IntUnaryOperator;
 import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
 
 public class Ch10Mistakes {
 
@@ -32,8 +33,8 @@ public class Ch10Mistakes {
     Consumer<Book> print = book -> System.out.println(book.title());
     print.accept(BOOKS.get(9));
 
-    System.out.println("== Function<Integer, Integer> where an IntUnaryOperator belongs");
-    Function<Integer, Integer> nextYearBoxed = year -> year + 1;
+    System.out.println("== UnaryOperator<Integer> where an IntUnaryOperator belongs");
+    UnaryOperator<Integer> nextYearBoxed = year -> year + 1;
     System.out.println(BOOKS.stream().mapToInt(Book::year).boxed().map(nextYearBoxed).toList());
 
     IntUnaryOperator nextYear = year -> year + 1;

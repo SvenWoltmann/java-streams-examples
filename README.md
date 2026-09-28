@@ -56,7 +56,7 @@ The functional-interfaces article has its chapters in `eu.happycoders.functional
 * `Ch7Wildcards` – `Predicate<? super T>` and `Function<? super T, ? extends R>`, and a method of our own with and without the wildcard
 * `Ch8OutsidePackage` – `Runnable`, `Callable`, `Comparator`, `FileFilter`, `DirectoryStream.Filter`, `TemporalAdjuster`
 * `Ch9Custom` – `TitleFormatter` vs. `Function` (nominal typing), `ThrowingFunction` for checked exceptions
-* `Ch10Mistakes` – `Function<T, Boolean>` instead of `Predicate`, `Function<T, Void>` instead of `Consumer`, `Function<Integer, Integer>` instead of `IntUnaryOperator`
+* `Ch10Mistakes` – `Function<T, Boolean>` instead of `Predicate`, `Function<T, Void>` instead of `Consumer`, `UnaryOperator<Integer>` instead of `IntUnaryOperator`
 
 The code requires Java 25 or newer.
 
