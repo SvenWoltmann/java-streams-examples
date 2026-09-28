@@ -15,9 +15,10 @@ public class Ch1Definition {
     printFirstTitle.run();
 
     System.out.println("== a functional interface may have more methods: Comparator");
-    // A named class implements Comparator<Book> ...
+    // an instance of the named class - needs the class YearComparator on top of this line
     Comparator<Book> byYearClass = new YearComparator();
-    // ... and so does a lambda - both are implementations of the one abstract method compare()
+
+    // the lambda is the complete implementation - it needs no class
     Comparator<Book> byYearLambda = (a, b) -> Integer.compare(a.year(), b.year());
 
     List<Book> books = new ArrayList<>(BOOKS);
