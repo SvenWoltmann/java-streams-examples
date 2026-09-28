@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 public class Ch7Wildcards {
 
@@ -18,10 +19,10 @@ public class Ch7Wildcards {
     withGap.add(null);
     System.out.println(withGap.stream().filter(nonNull).count());
 
-    System.out.println(
-        "== Function<? super T, ? extends R>: a Function<Object, String> maps books");
-    Function<Object, String> describe = Object::toString;
-    System.out.println(BOOKS.stream().map(describe).findFirst().orElse("-"));
+    System.out.println("== Function<? super T, ? extends R>: Object in, StringBuilder out");
+    Function<Object, StringBuilder> describe = o -> new StringBuilder(o.toString());
+    Stream<CharSequence> descriptions = BOOKS.stream().map(describe);
+    System.out.println(descriptions.findFirst().orElseThrow());
 
     System.out.println("== our own method: with the wildcard, the Predicate<Object> fits");
     System.out.println(select(withGap, nonNull).size());
