@@ -50,6 +50,12 @@ public class Ch5ReduceVsCollect {
       System.out.println(collectedTitles.size() + " titles");
     }
 
+    System.out.println("== Correct: Supplier and combiner as method references");
+    ArrayList<String> referencedTitles =
+        BOOKS.parallelStream()
+            .collect(ArrayList::new, (list, book) -> list.add(book.title()), ArrayList::addAll);
+    System.out.println(referencedTitles.size() + " titles");
+
     System.out.println("== Correct: the explicit form of collect() after map()");
     ArrayList<String> collected =
         BOOKS.parallelStream()
