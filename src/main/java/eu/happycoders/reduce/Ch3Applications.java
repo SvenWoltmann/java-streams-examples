@@ -34,6 +34,11 @@ public class Ch3Applications {
     BigDecimal total = prices.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
     System.out.println(total);
 
+    System.out.println("== A class of our own: Money");
+    List<Money> moneyPrices = List.of(Money.of("12.99"), Money.of("8.50"), Money.of("14.95"));
+    Money moneyTotal = moneyPrices.stream().reduce(Money.ZERO, Money::add);
+    System.out.println(moneyTotal);
+
     System.out.println("== double: sum() compensates rounding errors, reduce() does not");
     System.out.println(DoubleStream.of(0.1, 0.2, 0.3).reduce(0, Double::sum));
     System.out.println(DoubleStream.of(0.1, 0.2, 0.3).sum());
@@ -46,6 +51,13 @@ public class Ch3Applications {
             book -> book.author().startsWith("Robert"));
     Predicate<Book> all = conditions.stream().reduce(book -> true, Predicate::and);
     System.out.println(BOOKS.stream().filter(all).map(Book::title).toList());
+
+    System.out.println("== More readable: allMatch()");
+    System.out.println(
+        BOOKS.stream()
+            .filter(book -> conditions.stream().allMatch(condition -> condition.test(book)))
+            .map(Book::title)
+            .toList());
 
     System.out.println("== Combining predicates with or()");
     Predicate<Book> any = conditions.stream().reduce(book -> false, Predicate::or);
