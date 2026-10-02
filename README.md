@@ -19,6 +19,10 @@ and, in the package `eu.happycoders.functionalinterfaces`, to the articles
 * English: [Java Functional Interfaces (with Examples)](https://www.happycoders.eu/java/java-functional-interfaces/)
 * German: [Funktionale Interfaces in Java (mit Beispielen)](https://www.happycoders.eu/de/java/java-funktionale-interfaces/)
 
+and, in the package `eu.happycoders.reduce`, to the articles
+* English: [Java Stream reduce() (with Examples)](https://www.happycoders.eu/java/java-stream-reduce/)
+* German: [Java Stream reduce() (mit Beispielen)](https://www.happycoders.eu/de/java/java-stream-reduce/)
+
 ## Contents
 
 All examples work on the same data model: the records `Book` and `Author`, the enum `Genre`, and the `Library` class with eleven public-domain classics.
@@ -57,6 +61,16 @@ The functional-interfaces article has its chapters in `eu.happycoders.functional
 * `Ch8OutsidePackage` – `Runnable`, `Callable`, `Comparator`, `FileFilter`, `DirectoryStream.Filter`, `TemporalAdjuster`
 * `Ch9Custom` – `TitleFormatter` vs. `Function` (nominal typing), `ThrowingFunction` for checked exceptions
 * `Ch10Mistakes` – `Function<T, Boolean>` instead of `Predicate`, `Function<T, Void>` instead of `Consumer`, `UnaryOperator<Integer>` instead of `IntUnaryOperator`
+
+The `reduce()` article has its chapters in `eu.happycoders.reduce` (run them with `java -cp target/classes eu.happycoders.reduce.<ClassName>`):
+
+* `Ch1HowItWorks` – the sum of 1 to 5 with `reduce()` and as a loop; every call of the accumulator
+* `Ch2Variants` – the three variants of `reduce()` on full and empty streams, and the two of `IntStream`
+* `Ch3Applications` – product, minimum with `BinaryOperator.minBy()`, a `BigDecimal` sum (with `Prices`), `DoubleStream.sum()` against `reduce()`, predicates and functions chained with `reduce()`
+* `Ch4Parallel` – accumulator and combiner calls in a parallel stream; a non-neutral identity, a non-associative accumulator, and the accumulator used as combiner, each with its fix
+* `Ch5ReduceVsCollect` – an `ArrayList` as identity, `collect()` and `toList()`, string concatenation against `joining()`, `Collectors.reducing()` as downstream collector
+* `Ch6Fold` – `Gatherers.fold()` in a parallel stream
+* `Ch7Mistakes` – `get()` on an empty `Optional`, `mapToInt()` instead of boxing, overflow with `Math::multiplyExact`, `BigInteger`
 
 The code requires Java 25 or newer.
 
