@@ -34,11 +34,19 @@ public class Ch5ReduceVsCollect {
     System.out.println("== Correct: toList()");
     System.out.println(BOOKS.parallelStream().map(Book::title).toList().size() + " titles");
 
-    System.out.println("== Correct: collect() with the same three roles, on the book stream");
+    System.out.println(
+        "== Correct: collect() with the same three roles as lambdas, on the book stream");
     for (int i = 0; i < 5; i++) {
       ArrayList<String> collectedTitles =
           BOOKS.parallelStream()
-              .collect(ArrayList::new, (list, book) -> list.add(book.title()), ArrayList::addAll);
+              .collect(
+                  () -> new ArrayList<>(),
+                  (list, book) -> {
+                    list.add(book.title());
+                  },
+                  (a, b) -> {
+                    a.addAll(b);
+                  });
       System.out.println(collectedTitles.size() + " titles");
     }
 
