@@ -52,6 +52,19 @@ public class Ch3Applications {
     Predicate<Book> all = conditions.stream().reduce(book -> true, Predicate::and);
     System.out.println(BOOKS.stream().filter(all).map(Book::title).toList());
 
+    System.out.println("== More readable for known conditions: and()");
+    Predicate<Book> isAdventure = book -> book.genre() == ADVENTURE;
+    Predicate<Book> after1860 = book -> book.year() > 1860;
+    Predicate<Book> byRobert = book -> book.author().startsWith("Robert");
+    System.out.println(
+        BOOKS.stream().filter(isAdventure.and(after1860).and(byRobert)).map(Book::title).toList());
+
+    System.out.println("== More readable for known functions: andThen()");
+    Function<String, String> strip = String::strip;
+    Function<String, String> chained =
+        strip.andThen(String::toUpperCase).andThen(title -> title.replace(' ', '_'));
+    System.out.println(chained.apply("  The Time Machine "));
+
     System.out.println("== More readable: allMatch()");
     System.out.println(
         BOOKS.stream()

@@ -66,7 +66,7 @@ The `reduce()` article has its chapters in `eu.happycoders.reduce` (run them wit
 
 * `Ch1HowItWorks` – the sum of 1 to 5 with `reduce()` and as a loop; every call of the accumulator
 * `Ch2Variants` – the three variants of `reduce()` on full and empty streams, and the two of `IntStream`
-* `Ch3Applications` – product, minimum with `BinaryOperator.minBy()`, a `BigDecimal` sum (with `Prices`) and a sum of the record `Money`, `DoubleStream.sum()` against `reduce()`, predicates and functions chained with `reduce()`, and `allMatch()` as the more readable alternative
+* `Ch3Applications` – product, minimum with `BinaryOperator.minBy()`, a `BigDecimal` sum (with `Prices`) and a sum of the record `Money`, `DoubleStream.sum()` against `reduce()`, predicates and functions chained with `reduce()`, and `and()`, `andThen()` and `allMatch()` as the more readable alternatives
 * `Ch4Parallel` – accumulator and combiner calls in a parallel stream; a non-neutral identity, a non-associative accumulator, and the accumulator used as combiner, each with its fix
 * `Ch5ReduceVsCollect` – an `ArrayList` as identity, `collect()` and `toList()`, string concatenation against `joining()`, `Collectors.reducing()` as downstream collector
 * `Ch6Fold` – `Gatherers.fold()` in a parallel stream
