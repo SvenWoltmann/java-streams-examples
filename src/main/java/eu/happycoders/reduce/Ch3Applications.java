@@ -35,7 +35,7 @@ public class Ch3Applications {
     System.out.println(total);
 
     System.out.println("== A class of our own: Money");
-    List<Money> moneyPrices = List.of(Money.of("12.99"), Money.of("8.50"), Money.of("14.95"));
+    List<Money> moneyPrices = List.of(new Money(1299), new Money(850), new Money(1495));
     Money moneyTotal = moneyPrices.stream().reduce(Money.ZERO, Money::add);
     System.out.println(moneyTotal);
 
