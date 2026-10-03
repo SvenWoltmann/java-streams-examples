@@ -23,6 +23,9 @@ and, in the package `eu.happycoders.reduce`, to the articles
 * English: [Java Stream reduce() (with Examples)](https://www.happycoders.eu/java/java-stream-reduce/)
 * German: [Java Stream reduce() (mit Beispielen)](https://www.happycoders.eu/de/java/java-stream-reduce/)
 
+and, in the package `eu.happycoders.tomap`, to the article
+* German: [Java Collectors.toMap() (mit Beispielen)](https://www.happycoders.eu/de/java/java-collectors-tomap/)
+
 ## Contents
 
 All examples work on the same data model: the records `Book` and `Author`, the enum `Genre`, and the `Library` class with eleven public-domain classics.
@@ -71,6 +74,19 @@ The `reduce()` article has its chapters in `eu.happycoders.reduce` (run them wit
 * `Ch5ReduceVsCollect` – an `ArrayList` as identity, `collect()` and `toList()`, string concatenation against `joining()`, `Collectors.reducing()` as downstream collector
 * `Ch6Fold` – `Gatherers.fold()` in a parallel stream
 * `Ch7Mistakes` – `get()` on an empty `Optional`, `mapToInt()` instead of boxing, overflow with `Math::multiplyExact`, `BigInteger`
+
+The `toMap()` article has its chapters in `eu.happycoders.tomap` (run them with `java -cp target/classes eu.happycoders.tomap.<ClassName>`):
+
+* `Ch1HowItWorks` – title to year with `toMap()` and as a loop; `Function.identity()` for a lookup map
+* `Ch2Variants` – the three variants of `toMap()`: a duplicate key, the merge function, `TreeMap::new`; a throwing merge function against `collectingAndThen()`
+* `Ch3Merging` – counting with `Integer::sum`, concatenating titles (and `groupingBy()` with `joining()`), the oldest book with `BinaryOperator.minBy()`
+* `Ch4MapType` – the order of the `HashMap`, `LinkedHashMap` in stream order, `EnumMap` per genre
+* `Ch5Null` – the `NullPointerException` for a `null` value with two and three arguments, `filter()` and `collect()` with three arguments as ways out, a `null` key in a `TreeMap`
+* `Ch6Unmodifiable` – `toUnmodifiableMap()`: `UnsupportedOperationException`, merge function, `null` key
+* `Ch7Applications` – filtering, transforming and inverting a map; two lists to one map
+* `Ch8VsGroupingBy` – lists and counts with `toMap()` and `groupingBy()`, nested maps with `toMap()` as downstream collector
+* `Ch9Parallel` – the later number wins: `toMap()` against `toConcurrentMap()` in a parallel stream
+* `Ch10Mistakes` – a merge function that returns `null`, and counting first as the fix; swallowed duplicates
 
 The code requires Java 25 or newer.
 
