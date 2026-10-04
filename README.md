@@ -23,7 +23,8 @@ and, in the package `eu.happycoders.reduce`, to the articles
 * English: [Java Stream reduce() (with Examples)](https://www.happycoders.eu/java/java-stream-reduce/)
 * German: [Java Stream reduce() (mit Beispielen)](https://www.happycoders.eu/de/java/java-stream-reduce/)
 
-and, in the package `eu.happycoders.tomap`, to the article
+and, in the package `eu.happycoders.tomap`, to the articles
+* English: [Java Collectors.toMap() (with Examples)](https://www.happycoders.eu/java/java-collectors-tomap/)
 * German: [Java Collectors.toMap() (mit Beispielen)](https://www.happycoders.eu/de/java/java-collectors-tomap/)
 
 ## Contents
