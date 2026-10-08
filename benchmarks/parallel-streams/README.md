@@ -12,7 +12,7 @@ Each benchmark compares a sequential with a parallel stream. The work per elemen
 |---|---|
 | `WorkPerElementBenchmark` | The element count (100 to 1,000,000) and the work per element (0 to 1,000 tokens), over `IntStream.range()` |
 | `SourceBenchmark` | The source: `ArrayList`, `LinkedList`, `HashSet`, `TreeSet`, `Stream.iterate()`, `BufferedReader.lines()` – one million elements, 100 tokens each |
-| `OrderBenchmark` | Operations that depend on the encounter order: `findFirst()` against `findAny()`, `limit()` with and without `unordered()`, `forEachOrdered()`, `sorted()`, `distinct()` |
+| `OrderBenchmark` | Operations that depend on the encounter order: `findFirst()` against `findAny()`, `limit()` with and without `unordered()`, `forEachOrdered()`, `sorted()` on sorted and on shuffled numbers, `distinct()` with 1,000 and with 100,000 values |
 | `CollectorBenchmark` | The merge cost of seven collectors, with no work and with 100 tokens per element |
 
 Every value is the average of 3 forks × 5 measurement iterations of one second, after 5 warm-up iterations per fork.
@@ -31,5 +31,7 @@ All four benchmarks together take about an hour on an 18-core machine. Close eve
 ## Results
 
 The runs the article shows are in `results/<machine>/`, one JMH JSON file per benchmark and run date, with the commit of the sources they ran in `run-metadata-<date>.txt`.
+
+`order-extra-2026-10-08.json` holds three methods added after the first run: `sorted()` on the same numbers in random order (with and without work per element) and `distinct()` with 100,000 values instead of 1,000.
 
 `sources-lines-5forks-2026-10-08.json` repeats `SourceBenchmark` for `BufferedReader.lines()` with five forks: in the first run, one of the three parallel forks took 20 ms per operation against 12 ms in the other two. The repetition showed the same pattern (four forks at 12 ms, one at 24.5 ms) on an otherwise idle machine, so the article prints the median of its forks for this source.
