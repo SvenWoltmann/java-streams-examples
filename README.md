@@ -27,6 +27,10 @@ and, in the package `eu.happycoders.tomap`, to the articles
 * English: [Java Collectors.toMap() (with Examples)](https://www.happycoders.eu/java/java-collectors-tomap/)
 * German: [Java Collectors.toMap() (mit Beispielen)](https://www.happycoders.eu/de/java/java-collectors-tomap/)
 
+and, in the package `eu.happycoders.parallel` and the directory `benchmarks/parallel-streams`, to the articles
+* English: [Java Parallel Streams (with Examples)](https://www.happycoders.eu/java/java-parallel-streams/)
+* German: [Parallele Streams in Java (mit Beispielen)](https://www.happycoders.eu/de/java/java-parallel-streams/)
+
 ## Contents
 
 All examples work on the same data model: the records `Book` and `Author`, the enum `Genre`, and the `Library` class with eleven public-domain classics.
@@ -88,6 +92,17 @@ The `toMap()` article has its chapters in `eu.happycoders.tomap` (run them with 
 * `Ch8VsGroupingBy` – lists and counts with `toMap()` and `groupingBy()`, nested maps with `toMap()` as downstream collector
 * `Ch9Parallel` – the later number wins: `toMap()` against `toConcurrentMap()` in a parallel stream
 * `Ch10Mistakes` – a merge function that returns `null`, and counting first as the fix; swallowed duplicates
+
+The parallel streams article has its chapters in `eu.happycoders.parallel` (run them with `java -cp target/classes eu.happycoders.parallel.<ClassName>`); its JMH benchmarks are a Maven project of their own in `benchmarks/parallel-streams`:
+
+* `Ch1Creating` – `parallelStream()` and `parallel()`, the overflow of `IntStream.sum()`, the last `parallel()` or `sequential()` wins
+* `Ch2HowItWorks` – `trySplit()` on an `ArrayList`, the 128 pieces of one million elements, the threads that process a stream, the size of the common pool (with `-XX:ActiveProcessorCount=1` or `-Djava.util.concurrent.ForkJoinPool.common.parallelism=4`)
+* `Ch3WhenFaster` – the growing blocks of a `LinkedList`, and the pieces of an `ArrayList`, a `HashSet` and a `TreeSet` split the way the stream does (with `Pieces`)
+* `Ch4Order` – `forEach()` against `forEachOrdered()`, `findAny()` against `findFirst()`
+* `Ch5Rules` – a shared `ArrayList`, a counting lambda and a stream of indices, an identity that is not neutral
+* `Ch6Exceptions` – ten exceptions among one million elements; whether the throwing thread keeps working
+* `Ch7Blocking` – a blocking parallel stream slows down a computing one
+* `Ch8CustomPool` – a parallel stream in a `ForkJoinPool` of its own
 
 The code requires Java 25 or newer.
 
