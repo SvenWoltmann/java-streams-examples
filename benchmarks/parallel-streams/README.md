@@ -30,4 +30,6 @@ All four benchmarks together take about an hour on an 18-core machine. Close eve
 
 ## Results
 
-The runs the article shows are in `results/<machine>/`, one JMH JSON file per benchmark and run date.
+The runs the article shows are in `results/<machine>/`, one JMH JSON file per benchmark and run date, with the commit of the sources they ran in `run-metadata-<date>.txt`.
+
+`sources-lines-5forks-2026-10-08.json` repeats `SourceBenchmark` for `BufferedReader.lines()` with five forks: in the first run, one of the three parallel forks took 20 ms per operation against 12 ms in the other two. The repetition showed the same pattern (four forks at 12 ms, one at 24.5 ms) on an otherwise idle machine, so the article prints the median of its forks for this source.
