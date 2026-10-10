@@ -31,6 +31,10 @@ and, in the package `eu.happycoders.parallel` and the directory `benchmarks/para
 * English: [Java Parallel Streams (with Examples)](https://www.happycoders.eu/java/java-parallel-streams/)
 * German: [Parallele Streams in Java (mit Beispielen)](https://www.happycoders.eu/de/java/java-parallel-streams/)
 
+and, in the package `eu.happycoders.groupingby`, to the articles
+* English: [Java Stream Group By with Collectors.groupingBy()](https://www.happycoders.eu/java/java-collectors-groupingby/)
+* German: [Java Collectors.groupingBy(): Streams gruppieren (mit Beispielen)](https://www.happycoders.eu/de/java/java-collectors-groupingby/)
+
 ## Contents
 
 All examples work on the same data model: the records `Book` and `Author`, the enum `Genre`, and the `Library` class with eleven public-domain classics.
@@ -103,6 +107,18 @@ The parallel streams article has its chapters in `eu.happycoders.parallel` (run 
 * `Ch6Exceptions` – ten exceptions among one million elements; whether the throwing thread keeps working
 * `Ch7Blocking` – a blocking parallel stream slows down a computing one
 * `Ch8CustomPool` – a parallel stream in a `ForkJoinPool` of its own
+
+The `groupingBy()` article has its chapters in `eu.happycoders.groupingby` (run them with `java -cp target/classes eu.happycoders.groupingby.<ClassName>`):
+
+* `Ch1HowItWorks` – books by genre with `groupingBy()` and as a loop with `computeIfAbsent()`; the order of the `HashMap` keys
+* `Ch2Variants` – the three variants of `groupingBy()`: lists per author, `counting()` per genre, `EnumMap`, `LinkedHashMap` and `TreeMap` as map type
+* `Ch3Downstream` – `mapping()`, `joining()`, `toList()` against `toCollection(TreeSet::new)`, `counting()` and `summingInt()`, `averagingInt()`, `summarizingInt()`, `minBy()`, `collectingAndThen()`, `filtering()` against `filter()`, `flatMapping()` over the authors, `teeing()` with `minBy()` and `maxBy()`
+* `Ch4Nested` – two levels: genre, then author
+* `Ch5Keys` – the decade as a computed key, a record as a composite key, a `null` key with `filter()` and `Optional` as ways out
+* `Ch6Partitioning` – `partitioningBy()` with and without a downstream collector; an empty partition against `groupingBy()`
+* `Ch7Sorting` – a map sorted by value into a `LinkedHashMap`, the top three, titles sorted within each group
+* `Ch8Parallel` – the order within the groups: `groupingBy()` against `groupingByConcurrent()` in a parallel stream
+* `Ch9Mistakes` – `get()` on a missing group, and `getOrDefault()` as the fix
 
 The code requires Java 25 or newer.
 
