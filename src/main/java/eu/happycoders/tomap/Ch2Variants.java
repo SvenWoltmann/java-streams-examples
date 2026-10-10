@@ -58,7 +58,9 @@ public class Ch2Variants {
     System.out.println(
         yearByTitle.getClass().getSimpleName() + " " + yearByTitle.keySet().iterator().next());
     try {
-      BOOKS.stream().collect(collectingAndThen(toMap(Book::author, Book::year), TreeMap::new));
+      Map<String, Integer> yearByAuthor =
+          BOOKS.stream().collect(collectingAndThen(toMap(Book::author, Book::year), TreeMap::new));
+      System.out.println(yearByAuthor);
     } catch (IllegalStateException e) {
       System.out.println(e);
     }
