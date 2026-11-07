@@ -1,0 +1,4 @@
+date: 2026-11-07
+java: openjdk version "27" 2026-09-15
+java-streams-examples: aff7bd9
+benchmarks: all all methods
