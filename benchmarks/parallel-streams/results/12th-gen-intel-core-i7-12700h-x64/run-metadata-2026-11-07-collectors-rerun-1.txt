@@ -1,0 +1,4 @@
+date: 2026-11-07
+java: openjdk version "27" 2026-09-15
+java-streams-examples: 826dca9
+benchmarks: collector groupingBy|groupingByConcurrent|joining|toConcurrentMap|toList|toMap|toSet
